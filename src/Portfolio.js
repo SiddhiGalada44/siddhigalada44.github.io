@@ -124,7 +124,24 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl font-bold">Resume</h2>
-            <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1">
+            <button 
+    onClick={() => {
+      // Create a link element
+      const link = document.createElement('a');
+      
+      // Path to your resume file in the public folder
+      link.href = '/Siddhi_Galada_Resume.pdf';
+
+      // Ensure the link is not displayed
+      link.style.display = 'none';
+      
+      // Append to body, click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }}
+  className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1"
+>
               <Download className="w-5 h-5" />
               Download Resume
             </button>
