@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* This is a standard CSS file that's using Tailwind CSS's directives */
+/* The @tailwind directives above import Tailwind's base, components, and utilities styles */
+/* You can add custom CSS below these directives if needed */
