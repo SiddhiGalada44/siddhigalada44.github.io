@@ -131,7 +131,7 @@ const Portfolio = () => {
       
       // Path to your resume file in the public folder
       // link.href = 'public/Siddhi_Galada_Resume.pdf';
-      link.setAttribute('download', 'Siddhi_Galada_Resume.pdf');
+      link.setAttribute('download', 'public/Siddhi_Galada_Resume.pdf');
 
       // Ensure the link is not displayed
       link.style.display = 'none';
