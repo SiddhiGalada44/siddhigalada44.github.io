@@ -124,20 +124,15 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-3xl font-bold">Resume</h2>
-                  <button 
-  onClick={(e) => {
-    try {
-      // Prevent default button behavior
-      e.preventDefault();
-      
-      // Use the exact path for this GitHub Pages repository
-      const resumeUrl = `https://siddhigalada44.github.io/public/Siddhi_Galada_Resume.pdf`;
-      
-      // Create a temporary anchor element
+            <button 
+    onClick={() => {
+      // Create a link element
       const link = document.createElement('a');
-      link.href = resumeUrl;
-      link.download = 'Siddhi_Galada_Resume.pdf';
       
+      // Path to your resume file in the public folder
+      // link.href = 'public/Siddhi_Galada_Resume.pdf';
+      link.setAttribute('download', 'public/Siddhi_Galada_Resume.pdf');
+
       // Ensure the link is not displayed
       link.style.display = 'none';
       
@@ -145,41 +140,12 @@ const Portfolio = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      // Optional: Log for debugging
-      console.log('Attempting to download resume from:', resumeUrl);
-    } catch (error) {
-      console.error('Download failed:', error);
-      alert('Unable to download resume. Please try again.');
-    }
-  }}
+    }}
   className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1"
 >
-  <Download className="w-5 h-5" />
-  Download Resume
-</button>
-//             <button 
-//     onClick={() => {
-//       // Create a link element
-//       const link = document.createElement('a');
-      
-//       // Path to your resume file in the public folder
-//       // link.href = 'public/Siddhi_Galada_Resume.pdf';
-//       link.setAttribute('download', 'public/Siddhi_Galada_Resume.pdf');
-
-//       // Ensure the link is not displayed
-//       link.style.display = 'none';
-      
-//       // Append to body, click, and remove
-//       document.body.appendChild(link);
-//       link.click();
-//       document.body.removeChild(link);
-//     }}
-//   className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1"
-// >
-//               <Download className="w-5 h-5" />
-//               Download Resume
-//             </button>
+              <Download className="w-5 h-5" />
+              Download Resume
+            </button>
           </div>
 
           <div className="space-y-12">
