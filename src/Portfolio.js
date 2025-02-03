@@ -37,7 +37,6 @@ const Portfolio = () => {
     "Docker": <Box className="w-5 h-5" />,
     "Node.js": <Server className="w-5 h-5" />,
     "Flutter": <Smartphone className="w-5 h-5" />,
-    "Android Studio": <Laptop className="w-5 h-5" />
   };
 
   const projects = [
