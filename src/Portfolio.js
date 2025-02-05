@@ -316,7 +316,7 @@ const Portfolio = () => {
                   >
                     {techIcons[skill] || <Code className="w-5 h-5" />}
                     {skill}
-                  </span>
+                  </span> 
                 ))}
               </div>
             </div>
