@@ -18,12 +18,12 @@ import {
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const [expandedProject, setExpandedProject] = useState(null);
+  const [expandedProject, setExpandedProject] = useState(null); 
 
   const techIcons = {
     "Python": <Code className="w-5 h-5" />, "Java": <FileCode className="w-5 h-5" />, "JavaScript": <FileCode className="w-5 h-5" />, "TypeScript": <FileCode className="w-5 h-5" />,
     "MongoDB": <Database className="w-5 h-5" />, "PostgreSQL": <Database className="w-5 h-5" />, "DynamoDB": <Database className="w-5 h-5" />, "MySQL": <Database className="w-5 h-5" />,
-    "Linux": <Terminal className="w-5 h-5" />, "Docker": <Box className="w-5 h-5" />, "Node.js": <Server className="w-5 h-5" />, "Flutter": <Smartphone className="w-5 h-5" />
+    "Linux": <Terminal className="w-5 h-5" />, "Node.js": <Server className="w-5 h-5" />, "Flutter": <Smartphone className="w-5 h-5" />
   };
 
   const projects = [
