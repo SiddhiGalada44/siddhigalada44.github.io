@@ -13,19 +13,34 @@ import {
   ChevronUp,
   ChevronDown,
   Briefcase,
-  Users
+  Users,
+  DownloadCloud,
+  MapPin,
+  Calendar,
+  Award
 } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const [expandedProject, setExpandedProject] = useState(null); 
+  const [expandedProject, setExpandedProject] = useState(null);
+  const [activeSection, setActiveSection] = useState('about');
 
+  // Tech stack icons
   const techIcons = {
-    "Python": <Code className="w-5 h-5" />, "Java": <FileCode className="w-5 h-5" />, "JavaScript": <FileCode className="w-5 h-5" />, "TypeScript": <FileCode className="w-5 h-5" />,
-    "MongoDB": <Database className="w-5 h-5" />, "PostgreSQL": <Database className="w-5 h-5" />, "DynamoDB": <Database className="w-5 h-5" />, "MySQL": <Database className="w-5 h-5" />,
-    "Linux": <Terminal className="w-5 h-5" />, "Node.js": <Server className="w-5 h-5" />, "Flutter": <Smartphone className="w-5 h-5" />
+    "Python": <Code className="w-5 h-5" />, 
+    "Java": <FileCode className="w-5 h-5" />, 
+    "JavaScript": <FileCode className="w-5 h-5" />, 
+    "TypeScript": <FileCode className="w-5 h-5" />,
+    "MongoDB": <Database className="w-5 h-5" />, 
+    "PostgreSQL": <Database className="w-5 h-5" />, 
+    "DynamoDB": <Database className="w-5 h-5" />, 
+    "MySQL": <Database className="w-5 h-5" />,
+    "Linux": <Terminal className="w-5 h-5" />, 
+    "Node.js": <Server className="w-5 h-5" />, 
+    "Flutter": <Smartphone className="w-5 h-5" />
   };
 
+  // Projects data
   const projects = [
     {
       title: "Secure Decentralized Audit System",
@@ -64,159 +79,275 @@ const Portfolio = () => {
     }
   ];
 
+  // Filter projects by category
   const filterProjects = (category) => setActiveTab(category);
+  
+  // Set active section for smooth scrolling and highlighting
+  const handleSectionClick = (section) => {
+    setActiveSection(section);
+    document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Siddhi Galada</h1>
-          <div className="space-x-4">
-            <a href="#about" className="hover:text-blue-600">About</a>
-            <a href="#education" className="hover:text-blue-600">Education</a>
-            <a href="#projects" className="hover:text-blue-600">Projects</a>
-            <a href="#experience" className="hover:text-blue-600">Experience</a>
-            <a href="#leadership" className="hover:text-blue-600">Leadership</a>
-            <a href="#contact" className="hover:text-blue-600">Contact</a>
+    <div className="min-h-screen bg-gray-50">
+      {/* Fixed Navigation */}
+      <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-blue-600">Siddhi Galada</h1>
+            <div className="hidden md:flex space-x-6">
+              {['about', 'education', 'projects', 'experience', 'leadership', 'contact'].map((section) => (
+                <button 
+                  key={section}
+                  onClick={() => handleSectionClick(section)}
+                  className={`hover:text-blue-600 capitalize ${activeSection === section ? 'text-blue-600 font-semibold' : 'text-gray-600'}`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
 
-      <section id="about" className="py-20 bg-white">
-  <div className="text-center mb-6">
-    <a href="/Siddhi_Galada_Resume_SWE.pdf" download className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4H4zm4 10l4 4 4-4m-4-4v8" /></svg>
-      Download Resume
-    </a>
-  </div>
-  <div className="max-w-6xl mx-auto px-4 text-center">
-    <div className="w-36 h-36 rounded-full overflow-hidden mx-auto mb-6">
-      <img src="profile.jpeg" alt="Siddhi Galada" className="w-full h-full object-cover" />
-    </div>
-    <h2 className="text-4xl font-bold mb-2">Siddhi Galada</h2>
-    <p className="text-lg text-gray-600 mb-4">MS in Computer Science @ USC</p>
-    <p className="text-gray-700 max-w-2xl mx-auto">
-      Passionate software engineer and machine learning enthusiast, currently pursuing my Master's degree at USC. Experienced in building scalable applications and implementing ML solutions.
-    </p>
-    <div className="flex justify-center space-x-4 mt-6">
-      <a href="https://github.com/SiddhiGalada44" target="_blank" rel="noopener noreferrer">
-        <Github className="w-6 h-6 hover:text-blue-600" />
-      </a>
-      <a href="https://linkedin.com/in/siddhi-galada" target="_blank" rel="noopener noreferrer">
-        <Linkedin className="w-6 h-6 hover:text-blue-600" />
-      </a>
-      <a href="mailto:galada@usc.edu">
-        <Mail className="w-6 h-6 hover:text-blue-600" />
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="education" className="py-20 bg-white">
-  <div className="max-w-6xl mx-auto px-4">
-    <h2 className="text-3xl font-bold mb-8 text-center">Education</h2>
-    <div className="bg-gray-50 p-6 rounded-lg mb-6">
-      <h3 className="text-xl font-semibold">University of Southern California</h3>
-      <p>Master of Science in Computer Science</p>
-      <p className="text-sm text-gray-600">Aug 2024 – May 2026 (Expected) | Los Angeles, CA</p>
-    </div>
-    <div className="bg-gray-50 p-6 rounded-lg">
-      <h3 className="text-xl font-semibold">Sir MVIT</h3>
-      <p>Bachelor of Engineering in Computer Science and Engineering</p>
-      <p className="text-sm text-gray-600">Dec 2020 – Jul 2024 | Bengaluru, India</p>
-    </div>
-  </div>
-</section>
-
-<section id="leadership" className="py-20 bg-white">
-  <div className="max-w-6xl mx-auto px-4">
-    <h2 className="text-3xl font-bold mb-8 text-center">Leadership & Community</h2>
-    <div className="bg-gray-50 p-6 rounded-lg">
-      <h3 className="text-xl font-semibold">Women Who Code</h3>
-      <p>Member since Feb 2020</p>
-      <ul className="list-disc list-inside text-gray-700 mt-2">
-        <li>Facilitated networking events connecting over 100 women in technology.</li>
-        <li>Established a follow-up system leading to 25% increase in job placements.</li>
-        <li>Enhanced collaboration opportunities and provided access to mentorship.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="contact" className="py-20 bg-white">
-  <div className="max-w-6xl mx-auto px-4 text-center">
-    <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-    <div className="flex justify-center space-x-6">
-      <a href="mailto:galada@usc.edu" className="flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700">
-        <Mail className="w-5 h-5" /> Email
-      </a>
-      <a href="https://linkedin.com/in/siddhi-galada" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-        <Linkedin className="w-5 h-5" /> LinkedIn
-      </a>
-      <a href="https://github.com/SiddhiGalada44" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700">
-        <Github className="w-5 h-5" /> GitHub
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="projects" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
-          <div className="flex justify-center mb-8 space-x-4">
-            <button onClick={() => filterProjects('all')} className={`px-4 py-2 rounded-lg ${activeTab === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>All</button>
-            <button onClick={() => filterProjects('machine-learning')} className={`px-4 py-2 rounded-lg ${activeTab === 'machine-learning' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>Machine Learning</button>
-            <button onClick={() => filterProjects('security')} className={`px-4 py-2 rounded-lg ${activeTab === 'security' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>Security</button>
-            <button onClick={() => filterProjects('fullstack')} className={`px-4 py-2 rounded-lg ${activeTab === 'fullstack' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}>Fullstack</button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.filter(p => activeTab === 'all' || p.category === activeTab).map((project, index) => (
-              <div key={index} className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-xl font-bold mb-2 cursor-pointer" onClick={() => setExpandedProject(expandedProject === index ? null : index)}>
-                  {project.title}
-                </h3>
-                {expandedProject === index && (
-                  <>
-                    <p className="text-gray-700 mb-2">{project.description}</p>
-                    <p className="text-sm text-gray-500 mb-2">{project.location}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, idx) => (
-                        <span key={idx} className="flex items-center gap-1 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                          {techIcons[tech] || <Code className="w-4 h-4" />} {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </>
-                )}
-                <div className="text-right mt-2">
-                  {expandedProject === index ? <ChevronUp className="w-4 h-4 inline-block" /> : <ChevronDown className="w-4 h-4 inline-block" />}
+      {/* Main Content with Consistent Section Styling */}
+      <div className="pt-20">
+        {/* Hero Section */}
+        <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                  <img src="profile.jpeg" alt="Siddhi Galada" className="w-full h-full object-cover" />
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-xl font-semibold">Varcons Technologies Pvt Ltd</h3>
-                <p className="text-lg">Machine Learning Intern</p>
-                <p className="text-gray-600">Bengaluru, India</p>
+              <div className="md:w-2/3 text-center md:text-left">
+                <h2 className="text-4xl font-bold mb-3 text-gray-800">Siddhi Galada</h2>
+                <p className="text-xl text-blue-600 mb-4">MS in Computer Science @ USC</p>
+                <p className="text-gray-700 mb-6 max-w-xl">
+                  Passionate software engineer and machine learning enthusiast, currently pursuing my Master's degree at USC. Experienced in building scalable applications and implementing ML solutions.
+                </p>
+                <div className="flex justify-center md:justify-start space-x-4">
+                  <a href="/Siddhi_Galada_Resume_SWE.pdf" download className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                    <DownloadCloud className="w-5 h-5" /> Resume
+                  </a>
+                  <a href="https://github.com/SiddhiGalada44" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition">
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a href="https://linkedin.com/in/siddhi-galada" target="_blank" rel="noopener noreferrer" className="p-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href="mailto:galada@usc.edu" className="p-2 bg-red-600 text-white rounded-full hover:bg-red-700 transition">
+                    <Mail className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
-              <p className="text-gray-600">Aug 2023 – Oct 2023</p>
             </div>
-            <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2">
-              <li>Designed an advanced Preprocessor class, reducing preprocessing time by 30%</li>
-              <li>Analyzed sentiment distribution and visualized insights using word clouds</li>
-              <li>Built and trained a BERT-based classifier achieving 97% training accuracy</li>
-            </ul>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Education Section */}
+        <section id="education" className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-10 text-center">Education</h2>
+            <div className="space-y-6">
+              <div className="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-100 transition hover:shadow-md">
+                <div className="flex flex-col md:flex-row md:justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">University of Southern California</h3>
+                    <p className="text-lg">Master of Science in Computer Science</p>
+                  </div>
+                  <div className="mt-2 md:mt-0 flex items-center text-gray-600">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span>Aug 2024 – May 2026 (Expected)</span>
+                    <MapPin className="w-4 h-4 ml-3 mr-1" />
+                    <span>Los Angeles, CA</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-100 transition hover:shadow-md">
+                <div className="flex flex-col md:flex-row md:justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">Sir MVIT</h3>
+                    <p className="text-lg">Bachelor of Engineering in Computer Science</p>
+                  </div>
+                  <div className="mt-2 md:mt-0 flex items-center text-gray-600">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span>Dec 2020 – Jul 2024</span>
+                    <MapPin className="w-4 h-4 ml-3 mr-1" />
+                    <span>Bengaluru, India</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section - Redesigned with cards */}
+        <section id="projects" className="py-16 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-10 text-center">Projects</h2>
+            
+            {/* Filter Tabs */}
+            <div className="flex justify-center mb-10 space-x-3">
+              <button 
+                onClick={() => filterProjects('all')} 
+                className={`px-4 py-2 rounded-lg transition ${activeTab === 'all' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+              >
+                All
+              </button>
+              <button 
+                onClick={() => filterProjects('machine-learning')} 
+                className={`px-4 py-2 rounded-lg transition ${activeTab === 'machine-learning' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+              >
+                Machine Learning
+              </button>
+              <button 
+                onClick={() => filterProjects('security')} 
+                className={`px-4 py-2 rounded-lg transition ${activeTab === 'security' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+              >
+                Security
+              </button>
+              <button 
+                onClick={() => filterProjects('fullstack')} 
+                className={`px-4 py-2 rounded-lg transition ${activeTab === 'fullstack' ? 'bg-blue-600 text-white' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+              >
+                Fullstack
+              </button>
+            </div>
+            
+            {/* Project Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.filter(p => activeTab === 'all' || p.category === activeTab).map((project, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition">
+                  <div className="p-5">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                      <button 
+                        onClick={() => setExpandedProject(expandedProject === index ? null : index)}
+                        className="bg-gray-100 rounded-full p-1 hover:bg-gray-200 transition"
+                      >
+                        {expandedProject === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                      </button>
+                    </div>
+
+                    <div className={`transition-all overflow-hidden ${expandedProject === index ? 'max-h-96' : 'max-h-0'}`}>
+                      <p className="text-gray-700 my-3">{project.description}</p>
+                      <p className="text-sm text-gray-500 mb-3 flex items-center">
+                        <MapPin className="w-4 h-4 mr-1" /> {project.location}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, idx) => (
+                          <span key={idx} className="flex items-center gap-1 text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                            {techIcons[tech] || <Code className="w-4 h-4" />} {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Experience Section */}
+        <section id="experience" className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-10 text-center">Professional Experience</h2>
+            
+            <div className="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-100 transition hover:shadow-md">
+              <div className="flex flex-col md:flex-row md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Varcons Technologies Pvt Ltd</h3>
+                  <p className="text-lg">Machine Learning Intern</p>
+                </div>
+                <div className="mt-2 md:mt-0 flex items-center text-gray-600">
+                  <Calendar className="w-4 h-4 mr-1" />
+                  <span>Aug 2023 – Oct 2023</span>
+                  <MapPin className="w-4 h-4 ml-3 mr-1" />
+                  <span>Bengaluru, India</span>
+                </div>
+              </div>
+              
+              <div className="pl-4 border-l-2 border-blue-200">
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                    Designed an advanced Preprocessor class, reducing preprocessing time by 30%
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                    Analyzed sentiment distribution and visualized insights using word clouds
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                    Built and trained a BERT-based classifier achieving 97% training accuracy
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Leadership Section */}
+        <section id="leadership" className="py-16 bg-gray-50">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-10 text-center">Leadership & Community</h2>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition hover:shadow-md">
+              <div className="flex items-center mb-4">
+                <Award className="w-6 h-6 text-blue-600 mr-2" />
+                <h3 className="text-xl font-semibold">Women Who Code</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Member since Feb 2020</p>
+              
+              <div className="pl-4 border-l-2 border-blue-200">
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                    Facilitated networking events connecting over 100 women in technology.
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                    Established a follow-up system leading to 25% increase in job placements.
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-2 mr-2"></span>
+                    Enhanced collaboration opportunities and provided access to mentorship.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-16 bg-gradient-to-b from-white to-blue-50">
+          <div className="max-w-5xl mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
+            <p className="text-gray-700 mb-8 max-w-lg mx-auto">Feel free to reach out for collaboration opportunities or just to say hello!</p>
+            
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+              <a href="mailto:galada@usc.edu" className="w-full md:w-auto flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition">
+                <Mail className="w-5 h-5" /> Email
+              </a>
+              <a href="https://linkedin.com/in/siddhi-galada" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                <Linkedin className="w-5 h-5" /> LinkedIn
+              </a>
+              <a href="https://github.com/SiddhiGalada44" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center justify-center gap-2 bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-gray-900 transition">
+                <Github className="w-5 h-5" /> GitHub
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-6 bg-gray-800 text-white text-center">
+          <p>&copy; {new Date().getFullYear()} Siddhi Galada. All rights reserved.</p>
+        </footer>
+      </div>
     </div>
   );
 };
