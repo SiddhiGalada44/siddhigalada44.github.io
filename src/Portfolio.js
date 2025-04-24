@@ -84,7 +84,7 @@ const Portfolio = () => {
 
       <section id="about" className="py-20 bg-white">
   <div className="text-center mb-6">
-    <a href="/Siddhi_Galada_Resume.pdf" download className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+    <a href="/Siddhi_Galada_Resume_SWE.pdf" download className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4H4zm4 10l4 4 4-4m-4-4v8" /></svg>
       Download Resume
     </a>
