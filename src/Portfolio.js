@@ -4,7 +4,7 @@ import {
   Linkedin, 
   Mail, 
   Code,
-  Database,
+  Database, 
   Terminal,
   FileCode,
   Box,
