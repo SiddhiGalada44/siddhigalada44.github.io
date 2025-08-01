@@ -39,12 +39,15 @@ const Portfolio = () => {
     "Java": <FileCode className="w-5 h-5" />, 
     "JavaScript": <FileCode className="w-5 h-5" />, 
     "TypeScript": <FileCode className="w-5 h-5" />,
+    "Go": <FileCode className="w-5 h-5" />,
     "MongoDB": <Database className="w-5 h-5" />, 
     "PostgreSQL": <Database className="w-5 h-5" />, 
     "DynamoDB": <Database className="w-5 h-5" />, 
     "MySQL": <Database className="w-5 h-5" />,
     "Linux": <Terminal className="w-5 h-5" />, 
     "Node.js": <Server className="w-5 h-5" />, 
+    "Flask": <Server className="w-5 h-5" />,
+    "React": <Box className="w-5 h-5" />,
     "Flutter": <Smartphone className="w-5 h-5" />
   };
 
@@ -198,7 +201,7 @@ const Portfolio = () => {
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
                 <div className={`w-48 h-48 rounded-full overflow-hidden ${darkMode ? 'border-4 border-gray-700' : 'border-4 border-white'} shadow-lg transform hover:scale-105 transition-transform duration-300`}>
-                  <img src="profile.jpeg" alt="Siddhi Galada" className="w-full h-full object-cover" />
+                  <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-6xl font-bold">SG</div>
                 </div>
               </div>
               <div className="md:w-2/3 text-center md:text-left">
@@ -391,37 +394,79 @@ const Portfolio = () => {
           <div className="max-w-5xl mx-auto px-4">
             <h2 className={`text-3xl font-bold mb-10 text-center ${darkMode ? 'text-white' : 'text-gray-800'}`}>Professional Experience</h2>
             
-            <div 
-              className={`${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-100'} p-6 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md transform hover:scale-[1.01]`}
-            >
-              <div className="flex flex-col md:flex-row md:justify-between mb-4">
-                <div>
-                  <h3 className={`text-xl font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Varcons Technologies Pvt Ltd</h3>
-                  <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Machine Learning Intern</p>
+            <div className="space-y-6">
+              {/* Suki.ai Experience */}
+              <div 
+                className={`${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-100'} p-6 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md transform hover:scale-[1.01]`}
+              >
+                <div className="flex flex-col md:flex-row md:justify-between mb-4">
+                  <div>
+                    <h3 className={`text-xl font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Suki.ai</h3>
+                    <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Software Engineering Intern</p>
+                  </div>
+                  <div className={`mt-2 md:mt-0 flex items-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span>Jun 2025 – Present</span>
+                    <MapPin className="w-4 h-4 ml-3 mr-1" />
+                    <span>Redwood City, CA</span>
+                  </div>
                 </div>
-                <div className={`mt-2 md:mt-0 flex items-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                  <Calendar className="w-4 h-4 mr-1" />
-                  <span>Aug 2023 – Oct 2023</span>
-                  <MapPin className="w-4 h-4 ml-3 mr-1" />
-                  <span>Bengaluru, India</span>
+                
+                <div className={`pl-4 border-l-2 ${darkMode ? 'border-blue-500' : 'border-blue-200'}`}>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Designed and developed SimEHR, a simulated EMR platform replicating Epic and Cerner APIs, enabling 100% internal testing coverage
+                    </li>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Implemented React and TypeScript frontend components supporting FHIR resources, improving internal scenario configuration speed by 3x
+                    </li>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Developed scalable Go backend microservices for API development and EMR data synchronization, supporting 10+ healthcare workflows
+                    </li>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Implemented CI/CD pipelines with GitHub Actions and containerized environments (Docker, Kubernetes), reducing manual QA by 80%
+                    </li>
+                  </ul>
                 </div>
               </div>
-              
-              <div className={`pl-4 border-l-2 ${darkMode ? 'border-blue-500' : 'border-blue-200'}`}>
-                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                  <li className="flex items-start group">
-                    <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
-                    Designed an advanced Preprocessor class, reducing preprocessing time by 30%
-                  </li>
-                  <li className="flex items-start group">
-                    <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
-                    Analyzed sentiment distribution and visualized insights using word clouds
-                  </li>
-                  <li className="flex items-start group">
-                    <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
-                    Built and trained a BERT-based classifier achieving 97% training accuracy
-                  </li>
-                </ul>
+
+              {/* Varcons Experience */}
+              <div 
+                className={`${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-100'} p-6 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md transform hover:scale-[1.01]`}
+              >
+                <div className="flex flex-col md:flex-row md:justify-between mb-4">
+                  <div>
+                    <h3 className={`text-xl font-semibold mb-1 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Varcons Technologies Pvt Ltd</h3>
+                    <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Software Engineering Intern – NLP Systems</p>
+                  </div>
+                  <div className={`mt-2 md:mt-0 flex items-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span>Aug 2023 – Oct 2023</span>
+                    <MapPin className="w-4 h-4 ml-3 mr-1" />
+                    <span>Bengaluru, India</span>
+                  </div>
+                </div>
+                
+                <div className={`pl-4 border-l-2 ${darkMode ? 'border-blue-500' : 'border-blue-200'}`}>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Developed an ETL pipeline using Python for preprocessing COVID-19 Twitter data, improving NLP workflow efficiency by 30%
+                    </li>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Refactored sentiment analysis components for modularity, supporting experimentation across classification pipelines
+                    </li>
+                    <li className="flex items-start group">
+                      <span className={`inline-block w-2 h-2 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'} mt-2 mr-2 group-hover:animate-pulse`}></span>
+                      Fine-tuned a BERT-based text classification model using Hugging Face Transformers, achieving 89% validation accuracy
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
