@@ -321,7 +321,7 @@ const Portfolio = () => {
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-4">
                   <a 
-                    href="/Siddhi_Galada_Resume_SWE.pdf" 
+                    href="/Galada_Siddhi_Resume.pdf
                     download 
                     className="flex items-center gap-2 text-white px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                     style={{background: 'linear-gradient(135deg, #1e3a8a 0%, #10b981 100%)'}}
