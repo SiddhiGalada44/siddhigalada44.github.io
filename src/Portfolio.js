@@ -39,27 +39,28 @@ const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const fullText = 'MS in Computer Science @ USC';
 
-  // Enhanced tech stack with more details
+  // Enhanced tech stack with creative design
   const techStack = {
-    "Languages": {
-      "Python": { icon: <Code className="w-5 h-5" />, level: 95 },
-      "Java": { icon: <FileCode className="w-5 h-5" />, level: 90 },
-      "JavaScript": { icon: <FileCode className="w-5 h-5" />, level: 85 },
-      "TypeScript": { icon: <FileCode className="w-5 h-5" />, level: 85 },
-      "Go": { icon: <FileCode className="w-5 h-5" />, level: 80 },
-      "SQL": { icon: <Database className="w-5 h-5" />, level: 85 }
-    },
-    "Frameworks": {
-      "React": { icon: <Box className="w-5 h-5" />, level: 90 },
-      "Node.js": { icon: <Server className="w-5 h-5" />, level: 85 },
-      "Flask": { icon: <Server className="w-5 h-5" />, level: 90 },
-      "PyTorch": { icon: <Brain className="w-5 h-5" />, level: 85 }
-    },
-    "Cloud & DevOps": {
-      "AWS": { icon: <Globe className="w-5 h-5" />, level: 80 },
-      "Docker": { icon: <Box className="w-5 h-5" />, level: 85 },
-      "Kubernetes": { icon: <Server className="w-5 h-5" />, level: 75 }
-    }
+    "Languages": [
+      { name: "Python", icon: <Code className="w-6 h-6" />, color: "#3776ab" },
+      { name: "Java", icon: <FileCode className="w-6 h-6" />, color: "#f89820" },
+      { name: "JavaScript", icon: <FileCode className="w-6 h-6" />, color: "#f7df1e" },
+      { name: "TypeScript", icon: <FileCode className="w-6 h-6" />, color: "#3178c6" },
+      { name: "Go", icon: <FileCode className="w-6 h-6" />, color: "#00add8" },
+      { name: "SQL", icon: <Database className="w-6 h-6" />, color: "#336791" }
+    ],
+    "Frameworks & Libraries": [
+      { name: "React", icon: <Box className="w-6 h-6" />, color: "#61dafb" },
+      { name: "Node.js", icon: <Server className="w-6 h-6" />, color: "#339933" },
+      { name: "Flask", icon: <Server className="w-6 h-6" />, color: "#000000" },
+      { name: "PyTorch", icon: <Brain className="w-6 h-6" />, color: "#ee4c2c" }
+    ],
+    "Cloud & DevOps": [
+      { name: "AWS", icon: <Globe className="w-6 h-6" />, color: "#ff9900" },
+      { name: "Docker", icon: <Box className="w-6 h-6" />, color: "#2496ed" },
+      { name: "Kubernetes", icon: <Server className="w-6 h-6" />, color: "#326ce5" },
+      { name: "GitHub Actions", icon: <Terminal className="w-6 h-6" />, color: "#2088ff" }
+    ]
   };
 
   // Enhanced projects data
@@ -210,7 +211,7 @@ const Portfolio = () => {
       <nav className={`${darkMode ? 'bg-slate-800/95' : 'bg-white/95'} backdrop-blur-sm shadow-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollY > 50 ? 'py-2' : 'py-4'}`}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between items-center">
-            <h1 className={`text-2xl font-bold ${darkMode ? 'text-emerald-400' : 'text-navy-700'} transition-all duration-300`} style={{color: darkMode ? '#10b981' : '#1e3a8a'}}>
+            <h1 className={`text-2xl font-bold transition-all duration-300`} style={{color: darkMode ? '#10b981' : '#1e3a8a'}}>
               Siddhi Galada
             </h1>
             
@@ -301,8 +302,60 @@ const Portfolio = () => {
             <div className="flex flex-col md:flex-row items-center">
               <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
                 <div className={`w-48 h-48 rounded-full overflow-hidden ${darkMode ? 'border-4 border-slate-600' : 'border-4 border-white'} shadow-2xl transform hover:scale-105 transition-all duration-500 relative`}>
-                  <div className="w-full h-full flex items-center justify-center text-white text-6xl font-bold" style={{background: 'linear-gradient(135deg, #1e3a8a 0%, #10b981 100%)'}}>
-                    SG
+                  <div className="w-full h-full flex items-center justify-center text-white" style={{background: 'linear-gradient(135deg, #1e3a8a 0%, #10b981 100%)'}}>
+                    {/* Professional Developer Icon */}
+                    <svg className="w-32 h-32" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      {/* Laptop Base */}
+                      <rect x="100" y="250" width="200" height="120" rx="12" fill="white" fillOpacity="0.95"/>
+                      <rect x="110" y="260" width="180" height="100" rx="8" fill="#1e293b"/>
+                      
+                      {/* Screen Content - Code */}
+                      <rect x="125" y="275" width="80" height="4" rx="2" fill="#10b981"/>
+                      <rect x="125" y="285" width="120" height="4" rx="2" fill="#3b82f6"/>
+                      <rect x="135" y="295" width="60" height="4" rx="2" fill="#f59e0b"/>
+                      <rect x="125" y="305" width="100" height="4" rx="2" fill="#10b981"/>
+                      <rect x="135" y="315" width="90" height="4" rx="2" fill="#ef4444"/>
+                      <rect x="125" y="325" width="70" height="4" rx="2" fill="#8b5cf6"/>
+                      <rect x="135" y="335" width="110" height="4" rx="2" fill="#06b6d4"/>
+                      
+                      {/* Cursor */}
+                      <rect x="245" y="335" width="2" height="4" fill="white" className="animate-pulse"/>
+                      
+                      {/* Professional Figure */}
+                      <circle cx="200" cy="180" r="30" fill="white" fillOpacity="0.95"/>
+                      
+                      {/* Professional Hair */}
+                      <path d="M170 160 Q200 140 230 160 Q230 150 200 150 Q170 150 170 160" fill="#4a5568"/>
+                      
+                      {/* Body */}
+                      <rect x="180" y="210" width="40" height="50" rx="20" fill="white" fillOpacity="0.95"/>
+                      
+                      {/* Arms positioned over keyboard */}
+                      <ellipse cx="165" cy="225" rx="15" ry="8" fill="white" fillOpacity="0.95" transform="rotate(-15 165 225)"/>
+                      <ellipse cx="235" cy="225" rx="15" ry="8" fill="white" fillOpacity="0.95" transform="rotate(15 235 225)"/>
+                      
+                      {/* Hands on keyboard */}
+                      <circle cx="160" cy="240" r="5" fill="white" fillOpacity="0.95"/>
+                      <circle cx="240" cy="240" r="5" fill="white" fillOpacity="0.95"/>
+                      
+                      {/* Coffee Cup */}
+                      <rect x="310" y="280" width="25" height="30" rx="3" fill="white" fillOpacity="0.9"/>
+                      <rect x="315" y="285" width="15" height="20" fill="#8b4513"/>
+                      <path d="M335 285 Q345 285 345 295 Q345 305 335 305" stroke="white" strokeWidth="3" fill="none" fillOpacity="0.9"/>
+                      
+                      {/* Steam from coffee */}
+                      <path d="M320 275 Q322 270 320 265 Q318 270 320 275" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none"/>
+                      <path d="M325 275 Q327 270 325 265 Q323 270 325 275" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none"/>
+                      
+                      {/* Desk items */}
+                      <rect x="50" y="290" width="15" height="25" rx="2" fill="white" fillOpacity="0.8"/>
+                      <circle cx="57.5" cy="302.5" r="5" fill="#1e293b"/>
+                      
+                      {/* Plant */}
+                      <rect x="330" y="320" width="12" height="15" rx="2" fill="white" fillOpacity="0.8"/>
+                      <ellipse cx="336" cy="315" rx="8" ry="12" fill="#22c55e" fillOpacity="0.8"/>
+                      <ellipse cx="340" cy="310" rx="6" ry="8" fill="#16a34a" fillOpacity="0.8"/>
+                    </svg>
                   </div>
                   <div className="absolute inset-0" style={{background: 'linear-gradient(to top, rgba(16, 185, 129, 0.2) 0%, transparent 100%)'}}></div>
                 </div>
@@ -316,8 +369,14 @@ const Portfolio = () => {
                   <span className={`inline-block w-1 ml-1 h-6 ${typingComplete ? 'animate-blink' : ''}`} style={{backgroundColor: darkMode ? '#10b981' : '#1e3a8a'}}></span>
                 </p>
                 <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-6 max-w-xl text-lg leading-relaxed`}>
-                  Passionate software engineer and machine learning enthusiast, currently pursuing my Master's degree at USC. 
-                  Experienced in building scalable applications, implementing ML solutions, and creating innovative healthcare technology.
+                  Hey there! I'm a caffeine-powered software engineer and ML enthusiast who turns complex problems into elegant solutions. 
+                  Currently pursuing my Master's at USC while building everything from blockchain audit systems to AI-powered chatbots. 
+                  I speak fluent Python, dream in algorithms, and have a slight obsession with making healthcare technology actually work for people.
+                  <br />
+                  <br />
+                  When I'm not debugging code at 2 AM (a surprisingly frequent occurrence), you'll find me organizing tech events, 
+                  mentoring fellow developers, or attempting to explain why my latest side project will "definitely revolutionize everything" 
+                  to anyone willing to listen. I believe the best code is like a good joke - if you have to explain it, it probably needs refactoring.
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-4">
                   <a 
@@ -416,39 +475,80 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* Enhanced Skills Section */}
+        {/* Professional Skills Section */}
         <section id="skills" className={`py-16 ${darkMode ? 'bg-slate-900' : 'bg-slate-50'} transition-colors duration-300`}>
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className={`text-4xl font-bold mb-12 text-center ${darkMode ? 'text-white' : 'text-slate-800'}`}>Technical Skills</h2>
+            <div className="text-center mb-16">
+              <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-800'}`}>Core Technologies</h2>
+              <p className={`text-lg ${darkMode ? 'text-slate-400' : 'text-slate-600'} max-w-2xl mx-auto`}>
+                Proficient in modern technologies and frameworks that power scalable, efficient solutions
+              </p>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {Object.entries(techStack).map(([category, skills]) => (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {Object.entries(techStack).map(([category, skills], categoryIndex) => (
                 <div 
                   key={category}
-                  className={`${darkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} p-6 rounded-xl shadow-lg border transition-all duration-300 hover:shadow-xl transform hover:scale-105`}
+                  className={`${darkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white/80 border-slate-200/50'} backdrop-blur-sm p-8 rounded-2xl border shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] group relative overflow-hidden`}
+                  style={{
+                    animationDelay: `${categoryIndex * 200}ms`
+                  }}
                 >
-                  <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-slate-800'} text-center`}>{category}</h3>
-                  <div className="space-y-4">
-                    {Object.entries(skills).map(([skill, data]) => (
-                      <div key={skill} className="relative">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-2">
-                            <span style={{color: darkMode ? '#10b981' : '#1e3a8a'}}>{data.icon}</span>
-                            <span className={`font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{skill}</span>
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Category Header */}
+                  <div className="relative z-10 mb-8">
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 ${darkMode ? 'bg-slate-700' : 'bg-slate-100'} group-hover:scale-110 transition-transform duration-300`}>
+                      {category === 'Languages' && <Code className={`w-8 h-8 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`} />}
+                      {category === 'Frameworks & Libraries' && <Box className={`w-8 h-8 ${darkMode ? 'text-emerald-400' : 'text-emerald-600'}`} />}
+                      {category === 'Cloud & DevOps' && <Server className={`w-8 h-8 ${darkMode ? 'text-purple-400' : 'text-purple-600'}`} />}
+                    </div>
+                    <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'} mb-2`}>{category}</h3>
+                    <div className={`w-12 h-1 ${darkMode ? 'bg-slate-600' : 'bg-slate-300'} rounded-full`}></div>
+                  </div>
+                  
+                  {/* Skills Grid */}
+                  <div className="relative z-10 space-y-4">
+                    {skills.map((skill, index) => (
+                      <div 
+                        key={skill.name} 
+                        className={`flex items-center p-4 rounded-lg ${darkMode ? 'bg-slate-700/30 hover:bg-slate-700/50' : 'bg-slate-50 hover:bg-slate-100'} transition-all duration-300 transform hover:translate-x-2 group/item cursor-pointer`}
+                        style={{
+                          animationDelay: `${(categoryIndex * 200) + (index * 100)}ms`
+                        }}
+                      >
+                        {/* Skill Icon */}
+                        <div 
+                          className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center mr-4 group-hover/item:scale-110 transition-transform duration-300"
+                          style={{backgroundColor: `${skill.color}15`}}
+                        >
+                          <div style={{color: skill.color}}>
+                            {skill.icon}
                           </div>
-                          <span className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>{data.level}%</span>
                         </div>
-                        <div className={`h-2 ${darkMode ? 'bg-slate-700' : 'bg-slate-200'} rounded-full overflow-hidden`}>
-                          <div 
-                            className="h-full rounded-full transition-all duration-1000 ease-out"
-                            style={{ 
-                              width: `${data.level}%`,
-                              background: 'linear-gradient(90deg, #1e3a8a 0%, #10b981 100%)'
-                            }}
-                          ></div>
+                        
+                        {/* Skill Name */}
+                        <div className="flex-grow">
+                          <span className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'} group-hover/item:${darkMode ? 'text-white' : 'text-slate-900'} transition-colors duration-300`}>
+                            {skill.name}
+                          </span>
+                        </div>
+                        
+                        {/* Proficiency Indicator */}
+                        <div className="flex-shrink-0">
+                          <div className={`w-3 h-3 rounded-full ${darkMode ? 'bg-slate-600' : 'bg-slate-300'} group-hover/item:scale-125 transition-all duration-300`} style={{backgroundColor: skill.color}}></div>
                         </div>
                       </div>
                     ))}
+                  </div>
+                  
+                  {/* Category Footer */}
+                  <div className="relative z-10 mt-6 pt-6 border-t border-slate-200/20">
+                    <div className={`flex items-center justify-center text-sm font-medium ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                      <Star className="w-4 h-4 mr-2 text-amber-400" />
+                      {skills.length} Technologies
+                    </div>
                   </div>
                 </div>
               ))}
@@ -502,7 +602,7 @@ const Portfolio = () => {
                 >
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
-                      <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'} transition-colors duration-300 line-clamp-2`} style={{color: 'inherit'}}>
+                      <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'} transition-colors duration-300 line-clamp-2`}>
                         {project.title}
                       </h3>
                       <div className="flex gap-2 flex-shrink-0 ml-2">
