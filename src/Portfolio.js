@@ -299,68 +299,8 @@ const Portfolio = () => {
           </div>
           
           <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                <div className={`w-48 h-48 rounded-full overflow-hidden ${darkMode ? 'border-4 border-slate-600' : 'border-4 border-white'} shadow-2xl transform hover:scale-105 transition-all duration-500 relative`}>
-                  <div className="w-full h-full flex items-center justify-center text-white" style={{background: 'linear-gradient(135deg, #1e3a8a 0%, #10b981 100%)'}}>
-                    {/* Professional Developer Icon */}
-                    <svg className="w-32 h-32" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* Laptop Base */}
-                      <rect x="100" y="250" width="200" height="120" rx="12" fill="white" fillOpacity="0.95"/>
-                      <rect x="110" y="260" width="180" height="100" rx="8" fill="#1e293b"/>
-                      
-                      {/* Screen Content - Code */}
-                      <rect x="125" y="275" width="80" height="4" rx="2" fill="#10b981"/>
-                      <rect x="125" y="285" width="120" height="4" rx="2" fill="#3b82f6"/>
-                      <rect x="135" y="295" width="60" height="4" rx="2" fill="#f59e0b"/>
-                      <rect x="125" y="305" width="100" height="4" rx="2" fill="#10b981"/>
-                      <rect x="135" y="315" width="90" height="4" rx="2" fill="#ef4444"/>
-                      <rect x="125" y="325" width="70" height="4" rx="2" fill="#8b5cf6"/>
-                      <rect x="135" y="335" width="110" height="4" rx="2" fill="#06b6d4"/>
-                      
-                      {/* Cursor */}
-                      <rect x="245" y="335" width="2" height="4" fill="white" className="animate-pulse"/>
-                      
-                      {/* Professional Figure */}
-                      <circle cx="200" cy="180" r="30" fill="white" fillOpacity="0.95"/>
-                      
-                      {/* Professional Hair */}
-                      <path d="M170 160 Q200 140 230 160 Q230 150 200 150 Q170 150 170 160" fill="#4a5568"/>
-                      
-                      {/* Body */}
-                      <rect x="180" y="210" width="40" height="50" rx="20" fill="white" fillOpacity="0.95"/>
-                      
-                      {/* Arms positioned over keyboard */}
-                      <ellipse cx="165" cy="225" rx="15" ry="8" fill="white" fillOpacity="0.95" transform="rotate(-15 165 225)"/>
-                      <ellipse cx="235" cy="225" rx="15" ry="8" fill="white" fillOpacity="0.95" transform="rotate(15 235 225)"/>
-                      
-                      {/* Hands on keyboard */}
-                      <circle cx="160" cy="240" r="5" fill="white" fillOpacity="0.95"/>
-                      <circle cx="240" cy="240" r="5" fill="white" fillOpacity="0.95"/>
-                      
-                      {/* Coffee Cup */}
-                      <rect x="310" y="280" width="25" height="30" rx="3" fill="white" fillOpacity="0.9"/>
-                      <rect x="315" y="285" width="15" height="20" fill="#8b4513"/>
-                      <path d="M335 285 Q345 285 345 295 Q345 305 335 305" stroke="white" strokeWidth="3" fill="none" fillOpacity="0.9"/>
-                      
-                      {/* Steam from coffee */}
-                      <path d="M320 275 Q322 270 320 265 Q318 270 320 275" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none"/>
-                      <path d="M325 275 Q327 270 325 265 Q323 270 325 275" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none"/>
-                      
-                      {/* Desk items */}
-                      <rect x="50" y="290" width="15" height="25" rx="2" fill="white" fillOpacity="0.8"/>
-                      <circle cx="57.5" cy="302.5" r="5" fill="#1e293b"/>
-                      
-                      {/* Plant */}
-                      <rect x="330" y="320" width="12" height="15" rx="2" fill="white" fillOpacity="0.8"/>
-                      <ellipse cx="336" cy="315" rx="8" ry="12" fill="#22c55e" fillOpacity="0.8"/>
-                      <ellipse cx="340" cy="310" rx="6" ry="8" fill="#16a34a" fillOpacity="0.8"/>
-                    </svg>
-                  </div>
-                  <div className="absolute inset-0" style={{background: 'linear-gradient(to top, rgba(16, 185, 129, 0.2) 0%, transparent 100%)'}}></div>
-                </div>
-              </div>
-              <div className="md:w-2/3 text-center md:text-left">
+            <div className="text-center">
+              <div className="max-w-4xl mx-auto">
                 <h2 className={`text-5xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-slate-800'} animate-fadeIn`}>
                   Siddhi Galada
                 </h2>
@@ -368,17 +308,22 @@ const Portfolio = () => {
                   {typedText}
                   <span className={`inline-block w-1 ml-1 h-6 ${typingComplete ? 'animate-blink' : ''}`} style={{backgroundColor: darkMode ? '#10b981' : '#1e3a8a'}}></span>
                 </p>
-                <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-6 max-w-xl text-lg leading-relaxed`}>
-                  Hey there! I'm a caffeine-powered software engineer and ML enthusiast who turns complex problems into elegant solutions. 
-                  Currently pursuing my Master's at USC while building everything from blockchain audit systems to AI-powered chatbots. 
-                  I speak fluent Python, dream in algorithms, and have a slight obsession with making healthcare technology actually work for people.
-                  <br />
-                  <br />
-                  When I'm not debugging code at 2 AM (a surprisingly frequent occurrence), you'll find me organizing tech events, 
-                  mentoring fellow developers, or attempting to explain why my latest side project will "definitely revolutionize everything" 
-                  to anyone willing to listen. I believe the best code is like a good joke - if you have to explain it, it probably needs refactoring.
-                </p>
-                <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-6 max-w-4xl mx-auto text-lg leading-relaxed`}>
+                    I thrive on bridging the gap between cutting-edge research and practical, real-world systems. 
+                    Whether it’s simulating EMR workflows to make healthcare AI more reliable or experimenting with generative models 
+                    for creative problem-solving, I enjoy pushing projects from idea to production with a focus on scalability and impact. 
+                    My work blends a strong foundation in computer science with hands-on engineering, letting me adapt quickly across 
+                    domains like blockchain, cloud-native systems, and machine learning.
+                    <br />
+                    <br />
+                    Outside of building systems, I’m deeply curious about how technology shapes the world around us. 
+                    I enjoy exploring topics like data ethics, healthcare innovation, and the future of human–AI collaboration, 
+                    and I often translate those interests into side projects that test new ideas. 
+                    I also love connecting with other developers ,whether through hackathons, study groups, or open-source contributions , 
+                    because I believe the best solutions come from shared creativity and collaboration.
+                  </p>
+
+                <div className="flex flex-wrap justify-center gap-4">
                   <a 
                     href="/Galada_Siddhi_Resume.pdf"
                     download 
@@ -541,14 +486,6 @@ const Portfolio = () => {
                         </div>
                       </div>
                     ))}
-                  </div>
-                  
-                  {/* Category Footer */}
-                  <div className="relative z-10 mt-6 pt-6 border-t border-slate-200/20">
-                    <div className={`flex items-center justify-center text-sm font-medium ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
-                      <Star className="w-4 h-4 mr-2 text-amber-400" />
-                      {skills.length} Technologies
-                    </div>
                   </div>
                 </div>
               ))}
@@ -743,9 +680,6 @@ const Portfolio = () => {
               className={`${darkMode ? 'bg-slate-700 border-slate-600' : 'bg-slate-50 border-slate-200'} p-8 rounded-xl shadow-lg border transition-all duration-300 hover:shadow-xl transform hover:translate-x-2`}
             >
               <div className="flex items-center mb-6">
-                <div className={`p-3 rounded-full mr-4`} style={{backgroundColor: darkMode ? '#10b981' : '#1e3a8a'}}>
-                  <Users className="w-8 h-8 text-white" />
-                </div>
                 <div>
                   <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-slate-800'}`}>Women Who Code</h3>
                   <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Member since Feb 2020 • Global (Remote)</p>
