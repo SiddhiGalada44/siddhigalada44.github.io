@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
+import {
+  Github,
+  Linkedin,
+  Mail,
   Code,
-  Database, 
+  Database,
   Terminal,
   FileCode,
   Box,
   Server,
-  Smartphone,
   ChevronUp,
   ChevronDown,
-  Briefcase,
-  Users,
   DownloadCloud,
   MapPin,
   Calendar,
-  Award,
   ExternalLink,
   Moon,
   Sun,
@@ -37,22 +33,22 @@ const Portfolio = () => {
   const [typedText, setTypedText] = useState('');
   const [typingComplete, setTypingComplete] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredSkill, setHoveredSkill] = useState(null);
-  const [hoveredWord, setHoveredWord] = useState(null);
   const fullText = 'MS in Computer Science @ USC';
 
-  // Professional Purple color scheme
+  // Modern color scheme with personality
   const colors = {
-    primary: '#7c3aed', // purple-600 (slightly muted)
-    secondary: '#a78bfa', // purple-400 (softer)
-    accent: '#ddd6fe', // purple-200 (subtle)
-    light: '#f5f3ff', // purple-50 (very light)
-    dark: '#5b21b6', // purple-800
-    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)'
+    primary: '#6366f1', // indigo-500
+    secondary: '#8b5cf6', // violet-500
+    accent: '#ec4899', // pink-500
+    teal: '#14b8a6', // teal-500
+    light: '#faf5ff', // fuchsia-50
+    dark: '#4c1d95', // violet-900
+    gradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%)',
+    gradientAlt: 'linear-gradient(135deg, #14b8a6 0%, #6366f1 100%)'
   };
 
-  // Enhanced tech stack with creative design
+  // Enhanced tech stack with creative design - Updated from resume
   const techStack = {
     "Languages": [
       { name: "Python", icon: <Code className="w-6 h-6" />, color: "#3776ab" },
@@ -62,25 +58,26 @@ const Portfolio = () => {
       { name: "Go", icon: <FileCode className="w-6 h-6" />, color: "#00add8" },
       { name: "SQL", icon: <Database className="w-6 h-6" />, color: "#336791" },
       { name: "C++", icon: <Code className="w-6 h-6" />, color: "#00599C" },
-      { name: "HTML/CSS", icon: <FileCode className="w-6 h-6" />, color: "#E34F26" }
+      { name: "C", icon: <Code className="w-6 h-6" />, color: "#A8B9CC" }
     ],
     "Frameworks & Libraries": [
       { name: "React", icon: <Box className="w-6 h-6" />, color: "#61dafb" },
       { name: "Node.js", icon: <Server className="w-6 h-6" />, color: "#339933" },
-      { name: "Express.js", icon: <Server className="w-6 h-6" />, color: "#000000" },
+      { name: "Express", icon: <Server className="w-6 h-6" />, color: "#000000" },
       { name: "Flask", icon: <Server className="w-6 h-6" />, color: "#000000" },
       { name: "PyTorch", icon: <Brain className="w-6 h-6" />, color: "#ee4c2c" },
       { name: "TensorFlow", icon: <Brain className="w-6 h-6" />, color: "#FF6F00" },
-      { name: "Scikit-learn", icon: <Brain className="w-6 h-6" />, color: "#F7931E" },
+      { name: "scikit-learn", icon: <Brain className="w-6 h-6" />, color: "#F7931E" },
       { name: "Pandas", icon: <Database className="w-6 h-6" />, color: "#150458" },
+      { name: "NumPy", icon: <Code className="w-6 h-6" />, color: "#013243" },
       { name: "LangChain", icon: <Code className="w-6 h-6" />, color: "#1C3C3C" },
-      { name: "Tailwind CSS", icon: <FileCode className="w-6 h-6" />, color: "#06B6D4" }
+      { name: "FAISS", icon: <Brain className="w-6 h-6" />, color: "#0467DF" }
     ],
     "Databases & Tools": [
-      { name: "MongoDB", icon: <Database className="w-6 h-6" />, color: "#47A248" },
-      { name: "MySQL", icon: <Database className="w-6 h-6" />, color: "#4479A1" },
       { name: "PostgreSQL", icon: <Database className="w-6 h-6" />, color: "#336791" },
-      { name: "Redis", icon: <Database className="w-6 h-6" />, color: "#DC382D" },
+      { name: "MongoDB", icon: <Database className="w-6 h-6" />, color: "#47A248" },
+      { name: "DynamoDB", icon: <Database className="w-6 h-6" />, color: "#4053D6" },
+      { name: "MySQL", icon: <Database className="w-6 h-6" />, color: "#4479A1" },
       { name: "Git", icon: <Terminal className="w-6 h-6" />, color: "#F05032" },
       { name: "FHIR", icon: <FileCode className="w-6 h-6" />, color: "#FF6B6B" }
     ],
@@ -89,99 +86,125 @@ const Portfolio = () => {
       { name: "Docker", icon: <Box className="w-6 h-6" />, color: "#2496ed" },
       { name: "Kubernetes", icon: <Server className="w-6 h-6" />, color: "#326ce5" },
       { name: "GitHub Actions", icon: <Terminal className="w-6 h-6" />, color: "#2088ff" },
-      { name: "CI/CD", icon: <Terminal className="w-6 h-6" />, color: "#2088ff" },
-      { name: "Vite", icon: <Zap className="w-6 h-6" />, color: "#646CFF" }
+      { name: "CI/CD", icon: <Terminal className="w-6 h-6" />, color: "#2088ff" }
     ]
   };
 
-  // Enhanced projects data
+  // Enhanced projects data - Updated from resume and GitHub
   const projects = [
     {
-      title: "Real-Time Stock Portfolio Tracker",
-      description: "Built a full-stack MERN investment portfolio management application with live market data via Finnhub WebSocket API, enabling real-time tracking of 21+ stocks and crypto assets. Implemented secure JWT authentication, analyst recommendation insights, and glassmorphism UI design.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "WebSocket", "JWT", "Vite", "Finnhub API", "Framer Motion"],
-      location: "Los Angeles, CA",
-      period: "Oct 2025",
+      title: "Real-Time Stock Portfolio Management Platform",
+      description: "Developed a full-stack MERN application featuring a simulated EMR leveraging EpicCerner APIs, enabling 100% internal testing coverage and achieving a 3x improvement in scenario setup time. Designed CRUD interfaces and Python FTS pipeline for 200,000+ records, implementing REST/WebSocket APIs.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "WebSocket", "Python", "FHIR", "Epic/Cerner APIs"],
+      location: "Redwood City, CA",
+      period: "Mar 2025 – Aug 2025",
       category: "fullstack",
-      highlights: ["Real-time WebSocket price updates", "Secure JWT authentication with bcrypt", "Multi-API data aggregation with Promise.all()", "Glassmorphism UI with animations"],
-      github: "https://github.com/SiddhiGalada44/portfolio-tracker"
+      highlights: ["100% internal testing coverage", "3x faster scenario setup", "200,000+ records processed", "REST/WebSocket APIs"],
+      github: "https://github.com/SiddhiGalada44/stock-portfolio-app"
+    },
+    {
+      title: "GitWise — AI-Powered Repository Explorer",
+      description: "Built a 100% local, privacy-focused AI code assistant using React, TypeScript, and Ollama. Features natural language codebase queries, smart file browsing with syntax highlighting, code generation, repository insights, and multi-step deep analysis. Runs entirely on user's machine with no cloud dependencies.",
+      tech: ["React 19", "TypeScript", "Node.js", "Express", "Vite", "Ollama", "Qwen 2.5 Coder", "Docker"],
+      location: "Los Angeles, CA",
+      period: "Nov 2025",
+      category: "ai",
+      highlights: ["100% local & private", "AI chat for codebases", "Pattern-based code generation", "Repository comparison & insights"],
+      github: "https://github.com/SiddhiGalada44/gitwise"
     },
     {
       title: "Ticket Helper — LLM-Powered Support Assistant",
-      description: "Built a Retrieval-Augmented Generation chatbot using FAISS and LangChain for ticket resolution, reducing lookup time by 65% and achieving 87% precision on labeled ticket sets.",
-      tech: ["Python", "LangChain", "FAISS", "RAG", "OpenAI API"],
+      description: "Python, LangChain, FAISS, RAG. Trained/deployed a FAISS-backed RAG chatbot using LangChain API for ticket resolution. Optimized semantic retrieval pipelines to 87% precision on labeled support ticket sets, integrated a serverless Flask API and system-level caching pipeline, slashing lookup time from 600 s to ensure sub-second (~90 ms) latency at 85% accuracy and adding unit tests to ensure production-level reliability for deployment.",
+      tech: ["Python", "LangChain", "FAISS", "RAG", "Flask", "OpenAI API"],
       location: "Los Angeles, CA",
       period: "Jul 2025 – Aug 2025",
       category: "ai",
-      highlights: ["65% reduction in lookup time", "87% precision rate", "RAG implementation"]
+      highlights: ["87% precision rate", "Sub-second latency (90ms)", "Production-ready deployment", "600s → 90ms optimization"],
+      github: "https://github.com/SiddhiGalada44/Ticket-Helper"
     },
     {
-      title: "Secure Decentralized Audit System for EHR",
-      description: "Developed a blockchain-based audit log with Merkle trees ensuring tamper-evidence and non-repudiation. Integrated RBAC + asymmetric cryptography into a Flask web UI.",
-      tech: ["Python", "Flask", "Blockchain", "Cryptography", "RBAC"],
+      title: "Secure Decentralised EHR Audit Log",
+      description: "Designed a connected backend EHR aggregation service to fetch from multiple FHIR/WebSocket APIs, achieving clean code load and cutting workflow runtime latency by 3.0x. Built Go microservices for 20+ routing and data flow logic, containerised test setups with Docker/Compose for concurrent deployment, reducing setup time complexity to 80% and built a cross-verification framework, boosted API Tester Docker Compose for unit testing and debugging.",
+      tech: ["Python", "Flask", "Blockchain", "Merkle Trees", "RSA Cryptography", "RBAC"],
       location: "Los Angeles, CA",
       period: "Mar 2025 – Apr 2025",
       category: "security",
-      highlights: ["100% session security improvement", "Tamper-proof audit logs", "Role-based access control"]
+      highlights: ["3x runtime improvement", "80% setup time reduction", "Docker containerization", "Blockchain-based tamper-proof logs"],
+      github: "https://github.com/SiddhiGalada44/Secure-Decentralised-EHR-Audit-Log"
     },
     {
       title: "Genetic Disorder Prediction",
-      description: "Engineered a classifier on DNA microarray data (7,070 features), reaching 94.7% accuracy. Applied dimensionality reduction + stratified CV on 1,000+ samples.",
-      tech: ["Python", "PyTorch", "ML Pipeline"],
+      description: "Engineered a proof-of-concept classifier on 7,070-feature DNA microarray data, reaching 94.7% accuracy. Applied dimensionality reduction + stratified CV on 1,000+ samples, cutting misclassification by 15%.",
+      tech: ["Python", "PyTorch", "scikit-learn", "Pandas"],
       location: "Bengaluru, India",
       period: "Jan 2024 – May 2024",
       category: "machine-learning",
-      highlights: ["94.7% accuracy", "7,070 gene features", "15% misclassification reduction"]
-    },
-    {
-      title: "Stock Market Prediction",
-      description: "Developed a financial time-series forecasting model using Random Forests on S&P 500 data with engineered indicators and walk-forward validation.",
-      tech: ["Python", "Pandas", "Scikit-learn"],
-      location: "Los Angeles, CA",
-      period: "2024",
-      category: "machine-learning",
-      highlights: ["S&P 500 data analysis", "Feature engineering", "Walk-forward validation"]
+      highlights: ["94.7% accuracy", "7,070 gene features analyzed", "15% misclassification reduction", "1,000+ sample dataset"],
+      github: "https://github.com/SiddhiGalada44/Genetic-Disorder"
     },
     {
       title: "Weather Prediction System",
       description: "Forecasted daily weather using regression models with temporal feature extraction, achieving 92% prediction accuracy on historical datasets.",
-      tech: ["Python", "Scikit-learn", "Matplotlib"],
+      tech: ["Python", "scikit-learn", "Matplotlib", "Pandas"],
       location: "Los Angeles, CA",
-      period: "2024",
+      period: "Nov 2024",
       category: "machine-learning",
-      highlights: ["92% accuracy", "Temporal features", "Historical data analysis"]
+      highlights: ["92% prediction accuracy", "Temporal feature engineering", "Regression modeling"],
+      github: "https://github.com/SiddhiGalada44/WeatherPrediction"
     },
     {
-      title: "Maternal Database Management System",
-      description: "Built a web-based system to manage immunization schedules and maternal healthcare data for 2,000+ patients with real-time reminders and updates.",
-      tech: ["MySQL", "PHP", "HTML", "React"],
+      title: "Olympic Medal Prediction",
+      description: "Built a machine learning model to predict Olympic medals won by countries using historical data. Implemented Linear Regression on features including previous medals, number of athletes, year, and athlete demographics for multi-country forecasting.",
+      tech: ["Python", "scikit-learn", "Pandas", "Linear Regression"],
+      location: "Los Angeles, CA",
+      period: "Nov 2024",
+      category: "machine-learning",
+      highlights: ["Country-level predictions", "Historical data analysis", "Feature engineering with demographics"],
+      github: "https://github.com/SiddhiGalada44/predicting-medals-for-olympics"
+    },
+    {
+      title: "COVID-19 Sentiment Analysis",
+      description: "Analyzed sentiment in COVID-19 related social media data using NLP techniques. Processed Twitter data to determine emotional tone and public opinion during the pandemic using text classification models.",
+      tech: ["Python", "NLP", "BERT", "Jupyter Notebook"],
       location: "Bengaluru, India",
-      period: "2023",
+      period: "Aug 2023 – Oct 2023",
+      category: "ai",
+      highlights: ["Social media sentiment analysis", "COVID-19 data processing", "Text classification"],
+      github: "https://github.com/SiddhiGalada44/Sentiment-analysis"
+    },
+    {
+      title: "Shopon E-commerce Website",
+      description: "Designed and developed a full-featured e-commerce website using React. Created a modern shopping platform with product catalog, shopping cart, and responsive UI design showcasing frontend development skills.",
+      tech: ["React", "JavaScript", "CSS", "HTML"],
+      location: "Los Angeles, CA",
+      period: "May 2025",
       category: "fullstack",
-      highlights: ["2,000+ patients", "Real-time reminders", "Healthcare data management"]
+      highlights: ["E-commerce platform", "React components", "Responsive design"],
+      github: "https://github.com/SiddhiGalada44/Shopon-website"
     }
   ];
 
-  // Experience data
+  // Experience data - Updated from resume
   const experiences = [
     {
       company: "Suki.ai",
       role: "Software Engineering Intern",
       location: "Redwood City, CA",
-      period: "Jun 2025 – Aug 2025",
+      period: "Mar 2025 – Aug 2025",
       achievements: [
-        "Designed and developed SimEHR, a simulated EMR platform replicating Epic/Cerner APIs, enabling 100% internal testing coverage",
-        "Implemented React/TypeScript CRUD for FHIR resources, improving scenario setup time by 3x",
-        "Built Go microservices for API routing and data workflows, supporting 10+ EMR integration scenarios",
-        "Automated containerized test environments, cutting manual QA effort by 80%",
-        "Co-developed automated REST API tests and CI workflows, reducing integration defects by 30%"
+        "Developed a simulated EMR leveraging Epic/Cerner APIs, enabling 100% internal testing coverage and 3x improvement in scenario setup time",
+        "Designed CRUD interfaces and Python FTS pipeline for 200,000+ records, implementing REST/WebSocket APIs",
+        "Designed a connected backend EHR aggregation service to fetch from multiple FHIR/WebSocket APIs, achieving clean code load and cutting workflow runtime latency by 3.0x",
+        "Built Go microservices for 20+ routing and data flow logic, containerized test setups with Docker/Compose for concurrent deployment, reducing setup time complexity by 80%",
+        "Engineered RESTful API with TypeScript & Express to integrate Gizmo's Client 2.5 Oracle code generator and built file analysis, tailoring database schema code scripts, reducing setup time complexity by 89%",
+        "Built a cross-verification framework, boosted API Tester Docker Compose for unit testing and debugging"
       ],
-      tech: ["React", "TypeScript", "Go", "Docker", "Kubernetes", "GitHub Actions"]
+      tech: ["React", "TypeScript", "Go", "Python", "Docker", "Kubernetes", "FHIR", "Epic/Cerner APIs", "WebSocket", "Express"]
     },
     {
       company: "Varcons Technologies Pvt Ltd",
       role: "Software Engineering Intern – NLP Systems",
-      location: "Bengaluru, India", 
+      location: "Bengaluru, India",
       period: "Aug 2023 – Oct 2023",
       achievements: [
         "Built an ETL pipeline in Python to clean/normalize COVID-19 Twitter data, improving NLP workflow efficiency by 30%",
@@ -197,15 +220,6 @@ const Portfolio = () => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Mouse tracking for interactive effects
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   // Filter projects by category
@@ -250,13 +264,13 @@ const Portfolio = () => {
   const projectCounts = getProjectCategories();
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'bg-slate-900 text-white' : 'bg-purple-50 text-slate-700'} transition-colors duration-300`} style={{fontFamily: "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif"}}>
+    <div className={`min-h-screen ${darkMode ? 'bg-slate-900 text-white' : 'bg-slate-50 text-slate-900'} transition-colors duration-300`} style={{fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"}}>
       {/* Enhanced Navigation with scroll effect */}
-      <nav className={`${darkMode ? 'bg-slate-800/95' : 'bg-white/95'} backdrop-blur-sm shadow-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollY > 50 ? 'py-2' : 'py-4'}`}>
-        <div className="max-w-6xl mx-auto px-4">
+      <nav className={`${darkMode ? 'bg-slate-900/95' : 'bg-white/95'} backdrop-blur-md ${scrollY > 50 ? 'shadow-lg' : ''} fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrollY > 50 ? 'py-3' : 'py-5'} border-b ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <h1 className={`text-2xl font-bold transition-all duration-300 gradient-text-purple`}>
-              Siddhi Galada
+            <h1 className={`text-2xl font-black transition-all duration-300 gradient-text-vibrant`}>
+              SG
             </h1>
             
             {/* Desktop Navigation */}
@@ -333,99 +347,116 @@ const Portfolio = () => {
 
       {/* Main Content */}
       <div className="pt-20">
-        {/* Enhanced Hero Section */}
-        <section id="about" className={`py-16 md:py-24 ${darkMode ? 'bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800' : 'bg-gradient-to-br from-purple-50 via-white to-purple-100'} transition-colors duration-300 relative overflow-hidden`}>
-          {/* Subtle background elements */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl" style={{backgroundColor: colors.primary}}></div>
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full blur-3xl" style={{backgroundColor: colors.secondary}}></div>
-          </div>
-
-          {/* Minimal floating particles */}
+        {/* Modern Hero Section with Unique Design */}
+        <section id="about" className={`min-h-screen flex items-center ${darkMode ? 'bg-slate-900' : 'bg-slate-50'} transition-colors duration-300 relative overflow-hidden`}>
+          {/* Animated gradient orbs */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  width: '3px',
-                  height: '3px',
-                  backgroundColor: colors.accent,
-                  left: Math.random() * 100 + '%',
-                  top: Math.random() * 100 + '%',
-                  animation: `float ${Math.random() * 15 + 15}s ease-in-out infinite`,
-                  animationDelay: `${Math.random() * 5}s`,
-                  opacity: 0.2
-                }}
-              />
-            ))}
+            <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl animate-pulse"
+                 style={{background: colors.gradient, animationDuration: '4s'}}></div>
+            <div className="absolute top-1/2 -left-20 w-72 h-72 rounded-full opacity-20 blur-3xl animate-pulse"
+                 style={{background: colors.gradientAlt, animationDuration: '6s', animationDelay: '1s'}}></div>
+            <div className="absolute bottom-10 right-1/3 w-80 h-80 rounded-full opacity-10 blur-3xl animate-pulse"
+                 style={{background: colors.gradient, animationDuration: '5s', animationDelay: '2s'}}></div>
           </div>
-          
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="text-center">
-              <div className="max-w-4xl mx-auto">
-                <h2 className={`text-5xl font-bold mb-3 ${darkMode ? 'text-white' : 'text-slate-700'} animate-fadeIn`}>
-                  Siddhi Galada
-                </h2>
-                <p className={`text-xl mb-4 h-7 gradient-text-purple font-semibold`}>
-                  {typedText}
-                  <span className={`inline-block w-1 ml-1 h-6 ${typingComplete ? 'animate-blink' : ''}`} style={{background: colors.gradient}}></span>
-                </p>
 
-                {/* Professional description */}
-                <div className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-8 max-w-4xl mx-auto text-lg leading-relaxed`}>
-                  <p className="mb-4">
-                    I thrive on bridging the gap between cutting-edge research and practical, real-world systems.
-                    Whether it's simulating EMR workflows to make healthcare AI more reliable or experimenting with generative models
-                    for creative problem-solving, I enjoy pushing projects from idea to production with a focus on scalability and impact.
-                    My work blends a strong foundation in computer science with hands-on engineering, letting me adapt quickly across
-                    domains like blockchain, cloud-native systems, and machine learning.
-                  </p>
-
-                  <p>
-                    Outside of building systems, I'm deeply curious about how technology shapes the world around us.
-                    I enjoy exploring topics like data ethics, healthcare innovation, and the future of human–AI collaboration,
-                    and I often translate those interests into side projects that test new ideas.
-                    I also love connecting with other developers, whether through hackathons, study groups, or open-source contributions,
-                    because I believe the best solutions come from shared creativity and collaboration.
-                  </p>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Text Content */}
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${darkMode ? 'bg-slate-800 text-indigo-400' : 'bg-white text-indigo-600'} border ${darkMode ? 'border-slate-700' : 'border-indigo-200'}`}>
+                    Available for opportunities
+                  </div>
+                  <h1 className={`text-6xl md:text-7xl font-black ${darkMode ? 'text-white' : 'text-slate-900'} leading-tight`}>
+                    Hey, I'm <br/>
+                    <span className="gradient-text-vibrant">Siddhi</span>
+                  </h1>
+                  <div className={`text-2xl md:text-3xl font-medium ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                    {typedText}
+                    <span className={`inline-block w-1 ml-1 h-7 ${typingComplete ? 'animate-blink' : ''} bg-gradient-to-r from-indigo-500 to-pink-500`}></span>
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-4">
+                <p className={`text-lg ${darkMode ? 'text-slate-400' : 'text-slate-600'} leading-relaxed max-w-xl`}>
+                  Building scalable systems at the intersection of AI, healthcare, and cloud infrastructure.
+                  Former intern at <span className="font-semibold" style={{color: colors.primary}}>Suki.ai</span>,
+                  passionate about turning research into production-ready solutions.
+                </p>
+
+                <div className="flex flex-wrap gap-4">
                   <a
                     href="/Galada_Siddhi_Resume.pdf"
                     download
-                    className="flex items-center gap-2 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg"
+                    className="group relative px-8 py-4 rounded-xl text-white font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                     style={{background: colors.gradient}}
                   >
-                    <DownloadCloud className="w-5 h-5" />
-                    Download Resume
+                    <span className="relative z-10 flex items-center gap-2">
+                      <DownloadCloud className="w-5 h-5" />
+                      Get Resume
+                    </span>
+                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
                   </a>
                   <a
-                    href="https://github.com/SiddhiGalada44"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105`}
-                    style={{background: colors.gradient}}
+                    href="#contact"
+                    onClick={(e) => {e.preventDefault(); handleSectionClick('contact');}}
+                    className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${darkMode ? 'bg-slate-800 text-white hover:bg-slate-700' : 'bg-white text-slate-900 hover:bg-slate-100'} border ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}
                   >
+                    Let's Talk
+                  </a>
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <a href="https://github.com/SiddhiGalada44" target="_blank" rel="noopener noreferrer"
+                     className={`p-3 rounded-xl transition-all duration-300 hover:scale-110 ${darkMode ? 'bg-slate-800 hover:bg-slate-700 text-slate-300' : 'bg-white hover:bg-slate-50 text-slate-700'} border ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
                     <Github className="w-6 h-6" />
                   </a>
-                  <a
-                    href="https://linkedin.com/in/siddhi-galada"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
-                    style={{background: colors.gradient}}
-                  >
+                  <a href="https://linkedin.com/in/siddhi-galada" target="_blank" rel="noopener noreferrer"
+                     className={`p-3 rounded-xl transition-all duration-300 hover:scale-110 ${darkMode ? 'bg-slate-800 hover:bg-slate-700 text-slate-300' : 'bg-white hover:bg-slate-50 text-slate-700'} border ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
                     <Linkedin className="w-6 h-6" />
                   </a>
-                  <a
-                    href="mailto:galada@usc.edu"
-                    className="p-3 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
-                    style={{background: colors.gradient}}
-                  >
+                  <a href="mailto:galada@usc.edu"
+                     className={`p-3 rounded-xl transition-all duration-300 hover:scale-110 ${darkMode ? 'bg-slate-800 hover:bg-slate-700 text-slate-300' : 'bg-white hover:bg-slate-50 text-slate-700'} border ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}>
                     <Mail className="w-6 h-6" />
                   </a>
+                </div>
+              </div>
+
+              {/* Right Column - Stats/Info Cards */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className={`p-6 rounded-2xl ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-slate-200'} border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
+                  <div className="text-4xl font-black mb-2" style={{background: colors.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>9+</div>
+                  <div className={`text-sm font-medium ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Projects Built</div>
+                </div>
+                <div className={`p-6 rounded-2xl ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-slate-200'} border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
+                  <div className="text-4xl font-black mb-2" style={{background: colors.gradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>3.69</div>
+                  <div className={`text-sm font-medium ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>GPA @ USC</div>
+                </div>
+                <div className={`col-span-2 p-6 rounded-2xl ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-slate-200'} border backdrop-blur-sm hover:scale-105 transition-all duration-300`}>
+                  <div className={`text-sm font-medium mb-3 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Current focus</div>
+                  <div className="flex flex-wrap gap-2">
+                    {["LLMs & RAG", "Distributed Systems", "Go/TypeScript"].map((skill, i) => (
+                      <span key={i} className={`px-3 py-1 rounded-full text-xs font-medium ${darkMode ? 'bg-slate-700 text-indigo-400' : 'bg-indigo-50 text-indigo-700'}`}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className={`col-span-2 p-6 rounded-2xl ${darkMode ? 'bg-slate-800/50 border-slate-700' : 'bg-white border-slate-200'} border backdrop-blur-sm`}>
+                  <div className={`text-sm font-medium mb-3 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Quick highlights</div>
+                  <div className="space-y-2 text-sm">
+                    <div className={`flex items-center gap-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      <Star className="w-4 h-4" style={{color: colors.accent}} />
+                      Built SimEHR at Suki.ai
+                    </div>
+                    <div className={`flex items-center gap-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      <Star className="w-4 h-4" style={{color: colors.accent}} />
+                      89% setup time reduction
+                    </div>
+                    <div className={`flex items-center gap-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+                      <Star className="w-4 h-4" style={{color: colors.accent}} />
+                      200K+ records processed
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -433,20 +464,13 @@ const Portfolio = () => {
         </section>
 
         {/* Education Section */}
-        <section id="education" className={`py-16 ${darkMode ? 'bg-slate-800' : 'bg-white'} transition-colors duration-300 relative overflow-hidden`}>
-          {/* Animated wave decoration with purple theme */}
-          <div className="absolute top-0 left-0 right-0 h-1 overflow-hidden">
-            <div className={`h-full`}
-              style={{
-                background: colors.gradient,
-                width: '200%',
-                animation: 'wave 8s linear infinite'
-              }}
-            ></div>
-          </div>
-
-          <div className="max-w-5xl mx-auto px-4">
-            <h2 className={`text-4xl font-bold mb-12 text-center ${darkMode ? 'text-white' : 'text-slate-700'} animate-fadeIn`}>Education</h2>
+        <section id="education" className={`py-20 ${darkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300 relative overflow-hidden`}>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                <span className="gradient-text-vibrant">Education</span>
+              </h2>
+            </div>
             <div className="space-y-8">
               <div 
                 className={`${darkMode ? 'bg-slate-700 border-slate-600 hover:shadow-emerald-900/10' : 'bg-slate-50 border-slate-200 hover:shadow-xl'} p-8 rounded-xl shadow-sm border transition-all duration-500 transform hover:translate-y-[-8px] hover:scale-[1.02]`}
@@ -502,20 +526,22 @@ const Portfolio = () => {
         </section>
 
         {/* Professional Skills Section */}
-        <section id="skills" className={`py-16 ${darkMode ? 'bg-slate-900' : 'bg-purple-50'} transition-colors duration-300`}>
-          <div className="max-w-6xl mx-auto px-4">
+        <section id="skills" className={`py-20 ${darkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-700'}`}>Core Technologies</h2>
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                Tech <span className="gradient-text-vibrant">Stack</span>
+              </h2>
               <p className={`text-lg ${darkMode ? 'text-slate-400' : 'text-slate-600'} max-w-2xl mx-auto`}>
-                Proficient in modern technologies and frameworks that power scalable, efficient solutions
+                Tools and technologies I use to bring ideas to life
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
               {Object.entries(techStack).map(([category, skills], categoryIndex) => (
                 <div
                   key={category}
-                  className={`${darkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white border-purple-200/50'} backdrop-blur-sm p-8 rounded-2xl border shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] group relative overflow-hidden`}
+                  className={`${darkMode ? 'bg-slate-800/50 border-slate-700/50' : 'bg-white border-purple-200/50'} backdrop-blur-sm p-8 rounded-2xl border shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] group relative overflow-hidden h-full flex flex-col`}
                   style={{
                     boxShadow: darkMode ? undefined : '0 8px 32px rgba(124, 58, 237, 0.1)',
                     animationDelay: `${categoryIndex * 200}ms`
@@ -537,7 +563,7 @@ const Portfolio = () => {
                   </div>
                   
                   {/* Skills Grid */}
-                  <div className="relative z-10 space-y-4">
+                  <div className="relative z-10 space-y-4 flex-grow">
                     {skills.map((skill, index) => (
                       <div
                         key={skill.name}
@@ -602,9 +628,16 @@ const Portfolio = () => {
         </section>
 
         {/* Enhanced Projects Section */}
-        <section id="projects" className={`py-16 ${darkMode ? 'bg-slate-800' : 'bg-white'} transition-colors duration-300`}>
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className={`text-4xl font-bold mb-12 text-center ${darkMode ? 'text-white' : 'text-slate-700'}`}>Featured Projects</h2>
+        <section id="projects" className={`py-20 ${darkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                Featured <span className="gradient-text-vibrant">Work</span>
+              </h2>
+              <p className={`text-lg ${darkMode ? 'text-slate-400' : 'text-slate-600'} max-w-2xl mx-auto`}>
+                Real-world projects that solve problems and push boundaries
+              </p>
+            </div>
             
             {/* Enhanced Filter Tabs */}
             <div className="flex flex-wrap justify-center mb-12 gap-3">
@@ -673,9 +706,9 @@ const Portfolio = () => {
                       </button>
                     </div>
 
-                    <div className={`transition-all overflow-hidden ${expandedProject === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className={`transition-all overflow-hidden ${expandedProject === index ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
                       <p className={`mb-4 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{project.description}</p>
-                      
+
                       {/* Highlights */}
                       <div className="mb-4">
                         <h4 className={`text-sm font-semibold mb-2 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>Key Highlights:</h4>
@@ -702,7 +735,7 @@ const Portfolio = () => {
                       </div>
 
                       {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {project.tech.map((tech, idx) => (
                           <span
                             key={idx}
@@ -715,6 +748,33 @@ const Portfolio = () => {
                           </span>
                         ))}
                       </div>
+
+                      {/* Project Links */}
+                      {project.github && (
+                        <div className="flex gap-3 pt-3 border-t" style={{borderColor: darkMode ? 'rgba(124, 58, 237, 0.2)' : 'rgba(124, 58, 237, 0.1)'}}>
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-white transition-all duration-300 hover:shadow-lg hover:scale-105`}
+                            style={{background: colors.gradient}}
+                          >
+                            <Github className="w-4 h-4" />
+                            View on GitHub
+                          </a>
+                          {project.demo && (
+                            <a
+                              href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${darkMode ? 'bg-slate-600 hover:bg-slate-500 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'} transition-all duration-300 hover:shadow-lg hover:scale-105`}
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              Live Demo
+                            </a>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -724,9 +784,13 @@ const Portfolio = () => {
         </section>
 
         {/* Enhanced Experience Section */}
-        <section id="experience" className={`py-16 ${darkMode ? 'bg-slate-900' : 'bg-purple-50'} transition-colors duration-300`}>
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className={`text-4xl font-bold mb-12 text-center ${darkMode ? 'text-white' : 'text-slate-700'}`}>Professional Experience</h2>
+        <section id="experience" className={`py-20 ${darkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                <span className="gradient-text-vibrant">Experience</span>
+              </h2>
+            </div>
 
             <div className="space-y-8">
               {experiences.map((exp, index) => (
@@ -791,9 +855,13 @@ const Portfolio = () => {
         </section>
 
         {/* Leadership Section */}
-        <section id="leadership" className={`py-16 ${darkMode ? 'bg-slate-800' : 'bg-white'} transition-colors duration-300`}>
-          <div className="max-w-5xl mx-auto px-4">
-            <h2 className={`text-4xl font-bold mb-12 text-center ${darkMode ? 'text-white' : 'text-slate-700'}`}>Leadership & Community</h2>
+        <section id="leadership" className={`py-20 ${darkMode ? 'bg-slate-900' : 'bg-white'} transition-colors duration-300`}>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                Leadership & <span className="gradient-text-vibrant">Community</span>
+              </h2>
+            </div>
             
             <div
               className={`${darkMode ? 'bg-slate-700 border-slate-600' : 'bg-white border-purple-200/50'} p-8 rounded-xl border transition-all duration-300 hover:shadow-xl transform hover:translate-x-2`}
@@ -829,13 +897,22 @@ const Portfolio = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className={`py-16 ${darkMode ? 'bg-gradient-to-br from-slate-900 to-slate-800' : 'bg-gradient-to-br from-purple-100 via-purple-50 to-white'} transition-colors duration-300`}>
-          <div className="max-w-5xl mx-auto px-4 text-center">
-            <h2 className={`text-4xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-slate-700'}`}>Let's Connect</h2>
-            <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-12 max-w-2xl mx-auto text-lg`}>
-              I'm always interested in discussing new opportunities, innovative projects, or just connecting with fellow tech enthusiasts. 
-              Feel free to reach out!
-            </p>
+        <section id="contact" className={`py-20 ${darkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300 relative overflow-hidden`}>
+          {/* Background decoration */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+            <div className="absolute top-10 right-10 w-64 h-64 rounded-full blur-3xl"
+                 style={{background: colors.gradient}}></div>
+          </div>
+
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="mb-16">
+              <h2 className={`text-5xl md:text-6xl font-black mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                Let's <span className="gradient-text-vibrant">Connect</span>
+              </h2>
+              <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} max-w-2xl mx-auto text-lg`}>
+                Open to new opportunities and collaborations. Let's build something great together.
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               <a
@@ -888,35 +965,44 @@ const Portfolio = () => {
         </section>
 
         {/* Footer */}
-        <footer className={`py-8 ${darkMode ? 'bg-slate-900 text-slate-300' : 'text-white'} text-center relative overflow-hidden`}
-          style={{
-            background: darkMode ? undefined : colors.gradient
-          }}
-        >
-          {/* Subtle pattern overlay */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-full h-full" style={{
-              backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
+        <footer className={`py-12 ${darkMode ? 'bg-slate-900 border-t border-slate-800' : 'bg-white border-t border-slate-200'} text-center relative`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className={`text-sm ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+                <p className="font-semibold gradient-text-vibrant text-lg mb-1">Siddhi Galada</p>
+                <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
+              </div>
 
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <p className="mb-4 font-medium">&copy; {new Date().getFullYear()} Siddhi Galada. All rights reserved.</p>
-            <p className="text-sm opacity-90">Built with React, Tailwind CSS & Love 💜</p>
+              <div className="flex gap-4">
+                <a href="https://github.com/SiddhiGalada44" target="_blank" rel="noopener noreferrer"
+                   className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${darkMode ? 'hover:bg-slate-800' : 'hover:bg-slate-100'}`}>
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href="https://linkedin.com/in/siddhi-galada" target="_blank" rel="noopener noreferrer"
+                   className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${darkMode ? 'hover:bg-slate-800' : 'hover:bg-slate-100'}`}>
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="mailto:galada@usc.edu"
+                   className={`p-2 rounded-lg transition-all duration-300 hover:scale-110 ${darkMode ? 'hover:bg-slate-800' : 'hover:bg-slate-100'}`}>
+                  <Mail className="w-5 h-5" />
+                </a>
+              </div>
 
-            {/* Scroll to top button */}
-            <button
-              onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-              className={`mt-6 p-3 rounded-full inline-flex items-center justify-center transform hover:translate-y-[-4px] transition-all duration-300 hover:shadow-lg`}
-              style={{
-                background: darkMode ? 'rgba(51, 65, 85, 1)' : 'rgba(255, 255, 255, 0.2)',
-                backdropFilter: 'blur(10px)'
-              }}
-              aria-label="Scroll to top"
-            >
-              <ChevronUp className="w-5 h-5" />
-            </button>
+              {/* Scroll to top button */}
+              <button
+                onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+                className={`p-3 rounded-xl transition-all duration-300 hover:scale-110 ${darkMode ? 'bg-slate-800 hover:bg-slate-700' : 'bg-slate-100 hover:bg-slate-200'}`}
+                aria-label="Scroll to top"
+              >
+                <ChevronUp className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className={`mt-6 pt-6 border-t ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+              <p className={`text-xs ${darkMode ? 'text-slate-500' : 'text-slate-500'}`}>
+                Designed & built with passion using React & Tailwind CSS
+              </p>
+            </div>
           </div>
         </footer>
       </div>
@@ -1072,6 +1158,14 @@ const Portfolio = () => {
         /* Professional purple gradient text */
         .gradient-text-purple {
           background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        /* Vibrant gradient text */
+        .gradient-text-vibrant {
+          background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
